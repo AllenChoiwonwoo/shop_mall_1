@@ -10,9 +10,15 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      //상위 버전 부터는 builder 아니고 create
-      create: (ctx) => Products(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+        //상위 버전 부터는 builder 아니고 create
+        create: (ctx) => Products(),
+        ),
+      ],
+
+
       child: MaterialApp(
         title: 'MyShop',
         theme: ThemeData(
@@ -25,6 +31,7 @@ class MyApp extends StatelessWidget {
           ProductDetailScreen.routeName : (ctx) => ProductDetailScreen(),
         },
       ),
+
     );
   }
 }
